@@ -9,6 +9,8 @@ namespace ex11_events
     {
         // 이벤트 등록, event라는 키워드를 쓰면 기본적으로 EventHandler 이름을 일반적으로 사용
         public event EventHandler SomethingHappened;
+        // ** 이벤트는 클래스 외부에서 사용자가 직접 호출 불가
+        // ** 해당 클래스의 메서드 내에서만 호출하여 발생시켜야함!!!
 
         public void DoSomething(int number)
         {
