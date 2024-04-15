@@ -251,6 +251,7 @@
 		3. 콜백 메서드
 			- 다른 메서드의 콜백 함수 전달 가능
 			- 비동기 작업이 완료되면 콜백 함수가 호출되어 추가 작업 처리 가능
+	- 익명 메서드 사용
 
 - 이벤트(Event)
 	- 컴퓨터 내에서 발생하는 객체의 사건들
@@ -267,11 +268,44 @@
 
 ## 3일차
 - 람다식
-- LINQ
-- 애트리뷰트
+	- 익명 메서드를 만드는 방식 중 하나 - delegate | lambda expression
+	- 익명 메서드 사용 시 코딩량 줄여줌, 프로퍼티 사용 시에도 코딩량이 줄어듦
+	- 익명 메서드 사용 시마다 대리자를 선언해야 하기 때문
+		- Func, Action을 MS에서 미리 만들어둠!
+
+- LINQ(Language INtegrated Query)
+	- C#에 통합된 데이터 질의 기능(DB SQL과 거의 동일)
+	- group by에 집계함수가 필수가 아닌 것 외에는 SQL과 거의 동일
+	- 단, 키워드의 사용 순서가 다른 것을 인지해야 함!
+	- LINQ만 고집하면 안 됨. 기존의 C# 로직을 사용해야 할 경우도 있음
+
+- 리플렉션, 애트리뷰트
+	- 리플렉션 object.GetType();
+	- [Obsolete("다음 버전 사용불가!")]
+
 - 파이썬 실행
+	- COM 객체 사용(dynamic 형식)
+	- IronPython 라이브러리 : Python을 C#에서 사용할 수 있도록 해주는 오픈소스 라이브러리
+	- NuGet Package : 파이썬 pip와 같은 라이브러리 관리 툴
+	- 해당 프로젝트 종속성 > 마우스 우클릭 > NuGet Package 관리 
+		1. 파이썬 엔진, 스코프 객체, 설정경로 객체 생성
+		2. 해당 컴퓨터 파이썬 경로들 지정
+		3. 실행시킬 파이썬 파일 경로 지정
+		4. 파이썬 실행(scope 연결)
+		5. 파이썬 함수를 Func 또는 Action으로 매핑
+		6. 매핑시킨 메서드를 실행
+
+- 가비지 컬렉션(Garbage Collection)
+	- C, C++은 메모리 사용 시 개발자가 직접 메모리 해제해야 함
+	- C#, Java, Python 등의 객체지향 언어는 GC(Garbage Collection, 쓰레기 수집기) 기능으로 프로그램이 직접 관리
+	- C# 개발자는 메모리 관리에 아무것도 할 게 없다!
+
 - Winform UI 개발 + 파일, 스레드
-- 가비지 컬렉션
+	- 이벤트, 이벤트핸들러(대리자, 이벤트 연결)
+	- 그래픽 사용자 인터페이스를 만드는 방법
+	1. Winforms(Windows Forms)
+	2. WPF(Windows Presentation Foundation)
+	- WYSIWYG(What You See Is What You Get) 방식의 GUI 프로그램 개발
 
 ## 4일차
 - WPF
