@@ -366,6 +366,16 @@
 
 		
     - 도서관리 앱 with SQL Server(Base) ModernUI(NuGet 패키지)
+	```cs
+	// 값형식 변수에 null값을 넣을 수 있도록 만들어준 기능 Nullable, 변수명 뒤에 ? 만 추가할 것!!
+	int? a = null;
+	double? b = null;
+	float? c = null;
+	MessageBox.Show(a.ToString());
+	```
+	- 파일(&F) => Alt + F 하면 바로 파일 열림! 단축키 기능!!
+
+	- 로그인 패스워드 암호화 미구현	
 
 ## 8일차
 - 토이 프로젝트
@@ -375,9 +385,8 @@
 	- 국가교통정보센터 CCTV 뷰앱(OpenAPI, NuGet dll, Network, UI 디자인, 비동기 메서드)
 
 ## 개인 토이 프로젝트
-- 심플 메모장 앱 + ToDo List + 시간.. 일단 내 계획^^
+- 심플 메모장 앱 + ToDo List(DB연동) + 시간
 	- 기능 ...
 	- 특징 ...
 	- 배운 점
-
 	- 이미지/동영상
