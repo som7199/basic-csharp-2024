@@ -360,6 +360,10 @@
 - 토이 프로젝트
 	- 윈도우 탐색기 앱 종료
 		- 실행결과
+
+		https://github.com/som7199/basic-csharp-2024/assets/95500015/2f931dc1-4cec-4c53-bebc-afcf3e1d670d
+
+
 		
     - 도서관리 앱 with SQL Server(Base) ModernUI(NuGet 패키지)
 
