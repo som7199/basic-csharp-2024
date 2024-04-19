@@ -353,16 +353,22 @@
 		![중간결과](https://raw.githubusercontent.com/som7199/basic-csharp-2024/main/images/cs005.png)
 
 		- 미적용
-			- 컨텍스트 메뉴 보기 기능
+			- 컨텍스트 메뉴 리스트뷰 보기 기능
 			- 프로그램 더블클릭 실행
 
 ## 7일차 
 - 토이 프로젝트
 	- 윈도우 탐색기 앱 종료
-	- ModernUI앱(UI 디자인)
-    - 도서관리 앱 with SQL Server(Base)
-	- 국가교통정보센터 CCTV 뷰앱(OpenAPI, NuGet dll, Network)
+		- 실행결과
+		
+    - 도서관리 앱 with SQL Server(Base) ModernUI(NuGet 패키지)
+
+## 8일차
+- 토이 프로젝트
+	- 도서관리 앱 종료
 	- IoT Dummy 앱 with SQL Server(IoT, DB)
+
+	- 국가교통정보센터 CCTV 뷰앱(OpenAPI, NuGet dll, Network, UI 디자인, 비동기 메서드)
 
 ## 개인 토이 프로젝트
 - 심플 메모장 앱 + ToDo List + 시간.. 일단 내 계획^^

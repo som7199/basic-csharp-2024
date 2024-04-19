@@ -136,6 +136,51 @@ namespace MyExplorer
             }
         }
 
+        private void TstMenuLargeIcon_Click(object sender, EventArgs e)
+        {
+            LsvFile.View = View.LargeIcon;
+        }
+
+        private void TstMenuSmallIcon_Click(object sender, EventArgs e)
+        {
+            LsvFile.View = View.SmallIcon;
+        }
+
+        private void TstMenuList_Click(object sender, EventArgs e)
+        {
+            LsvFile.View = View.List;
+        }
+
+        private void TstMenuDetails_Click(object sender, EventArgs e)
+        {
+            LsvFile.View = View.Details;
+        }
+
+        private void TstMenuFile_Click(object sender, EventArgs e)
+        {
+            LsvFile.View = View.Tile;
+        }
+
+        // 리스트뷰 아이템 더블클릭 이벤트 핸들러, 실행파일 실행을 위해!
+        private void LsvFile_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                var extension = LsvFile.SelectedItems[0].Text.Split(".")[1];
+                if (extension == "exe")
+                {
+                    // 실행파일이면
+                    // MessageBox.Show(LsvFile.SelectedItems[0].Text); // 디버깅용
+                    // 실행파일의 경로는 TxtPath
+                    var fullPath = TxtPath.Text + '\\' + LsvFile.SelectedItems[0].Text;
+                    Process.Start(fullPath);    // 외부 프로그램 실행
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         #endregion
     }
 }
