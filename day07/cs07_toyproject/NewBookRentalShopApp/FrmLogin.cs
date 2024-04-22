@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +16,7 @@ namespace NewBookRentalShopApp
     public partial class FrmLogin : MetroForm
     {
         private bool isLogin = false;
-        private string connString = " Data Source=localhost;" +
+        private string connString = "Data Source=localhost;" +
                                     "Initial Catalog=BookRentalShop2024;" +
                                     "Persist Security Info=True;" +
                                     "User ID=sa;Encrypt=False;Password=mssql_p@ss";
@@ -72,6 +73,9 @@ namespace NewBookRentalShopApp
         // 로그인 DB 처리 시작!!
         private bool LoginProcess()
         {
+            var md5Hash = MD5.Create();
+
+
             string userId = TxtUserId.Text;     // 현재 DB로 넘기는 값
             string password = TxtPassword.Text;
             string chkUserId = string.Empty ;   // DB에서 넘어온 값
@@ -83,7 +87,12 @@ namespace NewBookRentalShopApp
              * 3. SqlCommand 명령 객체 생성
              * 4. SqlParameter 객체 생성
              * 5. Select SqlDataReader 또는 SqlDataSet 객체 사용
-             * 6. CUD 작업 SqlCommand.ExecuteQuery()
+             * 6. CUD 작업 SqlCommand.ExecuteNonQuery()
+             *    - ExecuteNonQuery()
+             *      - 결과를 받을 필요가 없는 Query문에 사용
+             *      - SQL문을 실행한 후 어떤 결과값이 돌아오지 않을 때 사용하는 메서드이다. 
+             *      - 데이터베이스에 데이터값을 넣거나, 데이터를 바꾸고 싶을 때 사용한다. 
+             *      - UPDATE , DELETE , INSERT 등을 이용할 때 사용된다.
              * 7. Connection 닫기
              */
 
@@ -103,13 +112,22 @@ namespace NewBookRentalShopApp
                 SqlCommand cmd = new SqlCommand(query, conn);
                 // @userId, @password 파라미터 할당
                 SqlParameter prmUserId = new SqlParameter(@"userId", userId);
-                SqlParameter prmPassword = new SqlParameter("Password", password);
+                SqlParameter prmPassword = new SqlParameter("@password", GetMd5Hash(md5Hash, password));
                 cmd.Parameters.Add(prmUserId);
                 cmd.Parameters.Add(prmPassword);
 
                 SqlDataReader reader = cmd.ExecuteReader();
+                /*
+                 * ExecuteReader ()
+                 *  - 어떤 SQL 쿼리에서도 적용이 가능하다. 
+                 *  - SELECT , UPDATE , DELETE , INSERT 모두 가능한다. 
+                 *  - 주로 결과값을 받고 싶은 경우에 사용한다. 
+                 *  - SELECT 쿼리를 이용할 경우 해당하는 값들이 DataReader 타입으로 온다. 
+                 *  - 값을 가져온 후에는 SqlDataReader객체의 read메서드를 통해 값을 읽어올 수 있고 , 
+                 *  - 사용 후에는 close메서드를 이용하여 실행을 끝내주어야 한다.
+                 */
 
-                if(reader.Read())
+                if (reader.Read())
                 {
                     chkUserId = reader["userId"] != null ? reader["userId"].ToString() : "-";       // 유저아이디가 null일 때 - 변경
                     chkPassword = reader["password"] != null? reader["password"].ToString() : "-";  // 패스워드가 null이면 -로 변경
@@ -140,6 +158,20 @@ namespace NewBookRentalShopApp
             {
                 TxtPassword.Focus();    // 패스워드로 포커스 이동
             }
+        }
+
+        // MD5 해시 알고리즘 암호화
+        // 1234 --> 01011011 -> 110010101101011 -> x65xAEx11..
+        string GetMd5Hash(MD5 md5Hash, string input)
+        {
+            // 입력 문자열을 byte 배열로 변환한 뒤 MD5 해시 처리
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            StringBuilder builder = new StringBuilder();    // 문자열을 좀 더 쉽게 쓰게 만들어주는 클래스
+            for (int i = 0; i < data.Length; i++)
+            {
+                builder.Append(data[i].ToString("x2"));     // 16진수 문자로 각 글자를 전부 변환
+            }
+            return builder.ToString();
         }
     }
 }
