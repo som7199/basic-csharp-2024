@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 
@@ -15,7 +8,8 @@ namespace NewBookRentalShopApp
     {
         // 각 화면을 초기화!
         FrmLoginUser frmLoginUser = null;   // 객체를 메서드로 생성
-
+        FrmBookDivision frmBookDivision = null;
+        FrmBookInfo frmBookInfo = null;
 
         public FrmMain()
         {
@@ -37,6 +31,19 @@ namespace NewBookRentalShopApp
             // 이미 창이 열려있으면 새로 생성할 필요가 없기 때문에
             // 이런 작업을 안하면 메뉴 클릭 시마다 새 폼이 열림 ㅠ
             frmLoginUser = ShowActiveForm(frmLoginUser, typeof(FrmLoginUser)) as FrmLoginUser;
+        }
+
+        // 책 장르 관리 메뉴 클릭 이벤트 핸들러
+        private void MnuBookDivision_Click(object sender, EventArgs e)
+        {
+            frmBookDivision = ShowActiveForm(frmBookDivision, typeof(FrmBookDivision)) as FrmBookDivision;
+        }
+
+        // 책 정보 관리 메뉴 클릭 이벤트 핸들러
+        private void MnuBookInfo_Click(object sender, EventArgs e)
+        {
+            // (frmBookInfo) 객체 변수, 객체 변수, (FrmBookInfo) 클래스, 클래스
+            frmBookInfo = ShowActiveForm(frmBookInfo, typeof(FrmBookInfo)) as FrmBookInfo;
         }
 
         Form ShowActiveForm(Form form, Type type)
@@ -64,5 +71,6 @@ namespace NewBookRentalShopApp
             }
             return form;
         }
+
     }
 }

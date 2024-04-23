@@ -72,7 +72,7 @@
             // MnuExit
             // 
             this.MnuExit.Name = "MnuExit";
-            this.MnuExit.Size = new System.Drawing.Size(180, 22);
+            this.MnuExit.Size = new System.Drawing.Size(129, 22);
             this.MnuExit.Text = " 끝내기(&X)";
             // 
             // 관리MToolStripMenuItem
@@ -104,18 +104,23 @@
             // 
             // MnuBookDivision
             // 
+            this.MnuBookDivision.Image = global::NewBookRentalShopApp.Properties.Resources.division;
             this.MnuBookDivision.Name = "MnuBookDivision";
             this.MnuBookDivision.Size = new System.Drawing.Size(180, 22);
             this.MnuBookDivision.Text = "책 장르 관리";
+            this.MnuBookDivision.Click += new System.EventHandler(this.MnuBookDivision_Click);
             // 
             // MnuBookInfo
             // 
+            this.MnuBookInfo.Image = global::NewBookRentalShopApp.Properties.Resources.book;
             this.MnuBookInfo.Name = "MnuBookInfo";
             this.MnuBookInfo.Size = new System.Drawing.Size(180, 22);
             this.MnuBookInfo.Text = "책 정보 관리";
+            this.MnuBookInfo.Click += new System.EventHandler(this.MnuBookInfo_Click);
             // 
             // MnuMembers
             // 
+            this.MnuMembers.Image = global::NewBookRentalShopApp.Properties.Resources.member;
             this.MnuMembers.Name = "MnuMembers";
             this.MnuMembers.Size = new System.Drawing.Size(180, 22);
             this.MnuMembers.Text = "도서 회원 관리";
@@ -127,6 +132,7 @@
             // 
             // MnuBookRental
             // 
+            this.MnuBookRental.Image = global::NewBookRentalShopApp.Properties.Resources.rental;
             this.MnuBookRental.Name = "MnuBookRental";
             this.MnuBookRental.Size = new System.Drawing.Size(180, 22);
             this.MnuBookRental.Text = "대출 관리";
@@ -142,7 +148,7 @@
             // MnuAbout
             // 
             this.MnuAbout.Name = "MnuAbout";
-            this.MnuAbout.Size = new System.Drawing.Size(180, 22);
+            this.MnuAbout.Size = new System.Drawing.Size(179, 22);
             this.MnuAbout.Text = "이 프로그램은 ...(&A)";
             // 
             // statusStrip1
