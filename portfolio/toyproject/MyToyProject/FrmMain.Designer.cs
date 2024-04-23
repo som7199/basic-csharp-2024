@@ -29,78 +29,185 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            groupBox1 = new GroupBox();
-            Timer = new System.Windows.Forms.Timer(components);
-            groupBox2 = new GroupBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             TimeLabel = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
+            label1 = new Label();
+            TxtTitle = new TextBox();
+            TxtDescription = new TextBox();
+            label4 = new Label();
+            label2 = new Label();
+            BtnNew = new Button();
+            BtnEdit = new Button();
+            BtnDelete = new Button();
+            BtnSave = new Button();
+            timer = new System.Windows.Forms.Timer(components);
+            DgvToDoList = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)DgvToDoList).BeginInit();
             SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(dateTimePicker1);
-            groupBox1.Location = new Point(12, 3);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(294, 435);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "To_Do_List";
-            // 
-            // Timer
-            // 
-            Timer.Interval = 1000;
-            Timer.Tick += Timer_Tick;
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(TimeLabel);
-            groupBox2.Location = new Point(312, 3);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(459, 68);
-            groupBox2.TabIndex = 2;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Time";
             // 
             // TimeLabel
             // 
-            TimeLabel.AutoSize = true;
-            TimeLabel.Font = new Font("나눔스퀘어라운드 Bold", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            TimeLabel.Location = new Point(23, 19);
+            TimeLabel.Anchor = AnchorStyles.Right;
+            TimeLabel.BackColor = Color.WhiteSmoke;
+            TimeLabel.BorderStyle = BorderStyle.Fixed3D;
+            TimeLabel.Font = new Font("나눔스퀘어라운드 Bold", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            TimeLabel.ImageAlign = ContentAlignment.MiddleRight;
+            TimeLabel.Location = new Point(786, 62);
             TimeLabel.Name = "TimeLabel";
-            TimeLabel.Size = new Size(428, 40);
+            TimeLabel.Size = new Size(183, 18);
             TimeLabel.TabIndex = 0;
-            TimeLabel.Text = "yyyy-MM-dd HH:mm:ss";
+            TimeLabel.Text = " - -  : :";
+            TimeLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker1
+            // label1
             // 
-            dateTimePicker1.Location = new Point(16, 22);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(272, 23);
-            dateTimePicker1.TabIndex = 3;
+            label1.BackColor = Color.AliceBlue;
+            label1.Font = new Font("맑은 고딕", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(36, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(933, 43);
+            label1.TabIndex = 3;
+            label1.Text = "To Do List";
+            label1.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // TxtTitle
+            // 
+            TxtTitle.BackColor = SystemColors.ControlLightLight;
+            TxtTitle.Location = new Point(36, 85);
+            TxtTitle.Name = "TxtTitle";
+            TxtTitle.Size = new Size(933, 23);
+            TxtTitle.TabIndex = 4;
+            // 
+            // TxtDescription
+            // 
+            TxtDescription.BackColor = SystemColors.ControlLightLight;
+            TxtDescription.Location = new Point(36, 139);
+            TxtDescription.Name = "TxtDescription";
+            TxtDescription.Size = new Size(933, 23);
+            TxtDescription.TabIndex = 5;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("맑은 고딕", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            label4.Location = new Point(36, 62);
+            label4.Name = "label4";
+            label4.Size = new Size(38, 20);
+            label4.TabIndex = 8;
+            label4.Text = "Title";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("맑은 고딕", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            label2.Location = new Point(36, 116);
+            label2.Name = "label2";
+            label2.Size = new Size(86, 20);
+            label2.TabIndex = 9;
+            label2.Text = "Description";
+            // 
+            // BtnNew
+            // 
+            BtnNew.BackColor = Color.WhiteSmoke;
+            BtnNew.ForeColor = SystemColors.ControlDarkDark;
+            BtnNew.Location = new Point(236, 171);
+            BtnNew.Name = "BtnNew";
+            BtnNew.Size = new Size(130, 33);
+            BtnNew.TabIndex = 10;
+            BtnNew.Text = "New";
+            BtnNew.UseVisualStyleBackColor = false;
+            BtnNew.Click += BtnNew_Click;
+            // 
+            // BtnEdit
+            // 
+            BtnEdit.BackColor = Color.WhiteSmoke;
+            BtnEdit.ForeColor = SystemColors.ControlDarkDark;
+            BtnEdit.Location = new Point(372, 171);
+            BtnEdit.Name = "BtnEdit";
+            BtnEdit.Size = new Size(130, 33);
+            BtnEdit.TabIndex = 11;
+            BtnEdit.Text = "Edit";
+            BtnEdit.UseVisualStyleBackColor = false;
+            BtnEdit.Click += BtnEdit_Click;
+            // 
+            // BtnDelete
+            // 
+            BtnDelete.BackColor = Color.WhiteSmoke;
+            BtnDelete.ForeColor = SystemColors.ControlDarkDark;
+            BtnDelete.Location = new Point(508, 171);
+            BtnDelete.Name = "BtnDelete";
+            BtnDelete.Size = new Size(130, 33);
+            BtnDelete.TabIndex = 12;
+            BtnDelete.Text = "Delete";
+            BtnDelete.UseVisualStyleBackColor = false;
+            BtnDelete.Click += BtnDelete_Click;
+            // 
+            // BtnSave
+            // 
+            BtnSave.BackColor = Color.WhiteSmoke;
+            BtnSave.ForeColor = SystemColors.ControlDarkDark;
+            BtnSave.Location = new Point(644, 171);
+            BtnSave.Name = "BtnSave";
+            BtnSave.Size = new Size(130, 33);
+            BtnSave.TabIndex = 13;
+            BtnSave.Text = "Save";
+            BtnSave.UseVisualStyleBackColor = false;
+            BtnSave.Click += BtnSave_Click;
+            // 
+            // timer
+            // 
+            timer.Tick += timer_Tick;
+            // 
+            // DgvToDoList
+            // 
+            DgvToDoList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvToDoList.BackgroundColor = Color.AliceBlue;
+            DgvToDoList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvToDoList.GridColor = SystemColors.ScrollBar;
+            DgvToDoList.Location = new Point(36, 218);
+            DgvToDoList.Name = "DgvToDoList";
+            DgvToDoList.Size = new Size(933, 348);
+            DgvToDoList.TabIndex = 14;
             // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(777, 450);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            BackColor = SystemColors.ControlLightLight;
+            ClientSize = new Size(1005, 581);
+            Controls.Add(DgvToDoList);
+            Controls.Add(TimeLabel);
+            Controls.Add(BtnSave);
+            Controls.Add(BtnDelete);
+            Controls.Add(BtnEdit);
+            Controls.Add(BtnNew);
+            Controls.Add(label2);
+            Controls.Add(label4);
+            Controls.Add(TxtDescription);
+            Controls.Add(TxtTitle);
+            Controls.Add(label1);
+            ForeColor = SystemColors.ControlDarkDark;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmMain";
-            Text = "MyApp";
-            groupBox1.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            Text = "To Do List";
+            Load += FrmMain_Load;
+            ((System.ComponentModel.ISupportInitialize)DgvToDoList).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private GroupBox groupBox1;
-        private System.Windows.Forms.Timer Timer;
-        private GroupBox groupBox2;
         private Label TimeLabel;
-        private DateTimePicker dateTimePicker1;
+        private Label label1;
+        private TextBox TxtTitle;
+        private TextBox TxtDescription;
+        private Label label4;
+        private Label label2;
+        private Button BtnNew;
+        private Button BtnEdit;
+        private Button BtnDelete;
+        private Button BtnSave;
+        private System.Windows.Forms.Timer timer;
+        private DataGridView DgvToDoList;
     }
 }
