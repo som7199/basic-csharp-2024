@@ -38,7 +38,7 @@ namespace NewBookRentalShopApp
             isNew = true;
             TxtRentalIdx.Text = TxtMemNames.Text = string.Empty;
             TxtMemberIdx.Text = TxtBookIdx.Text = TxtBookNames.Text = string.Empty;
-            TxtRentalIdx.Focus();            // 순번은 자동증가하기 때문에 입력 불가
+            TxtMemNames.Focus();            // 순번은 자동증가하기 때문에 입력 불가
             DtpReturnDate.Value = DtpRentalDate.Value = DateTime.Now;
         }
 
@@ -123,22 +123,24 @@ namespace NewBookRentalShopApp
                     if (result > 0)
                     {
                         // this 메시지 박스의 부모창이 누구냐, FrmLoginUser 
-                        MetroMessageBox.Show(this, "저장 성공!", "저장", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MetroMessageBox.Show(this.Parent.Parent, "저장 성공!", "저장", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //MessageBox.Show("저장 성공!", "저장", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MetroMessageBox.Show(this, "저장 실패!", "저장", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroMessageBox.Show(this.Parent.Parent, "저장 실패!", "저장", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MetroMessageBox.Show(this, $"오류 : {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this.Parent.Parent, $"오류 : {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            TxtRentalIdx.Text = TxtMemNames.Text = string.Empty; // 입력, 수정, 삭제 이후에는 모든 입력값을 지워줘야 함
-            DtpReturnDate.Value = DateTime.Now;
+            TxtRentalIdx.Text = TxtMemNames.Text = string.Empty;
+            TxtMemberIdx.Text = TxtBookIdx.Text = TxtBookNames.Text = string.Empty;
+            TxtMemNames.Focus();            // 순번은 자동증가하기 때문에 입력 불가
+            DtpReturnDate.Value = DtpRentalDate.Value = DateTime.Now;
             RefreshData();
         }
 

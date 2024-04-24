@@ -69,9 +69,8 @@ namespace NewBookRentalShopApp
         private void BtnNew_Click(object sender, EventArgs e)
         {
             isNew = true;
-            TxtBookIdx.Text = TxtAuthor.Text = string.Empty;
-            TxtBookIdx.Focus();            // 순번은 자동증가하기 때문에 입력 불가
             TxtBookIdx.Text = TxtAuthor.Text = string.Empty; // 입력, 수정, 삭제 이후에는 모든 입력값을 지워줘야 함
+            TxtAuthor.Focus();            // 순번은 자동증가하기 때문에 입력 불가
             CboDivision.SelectedIndex = -1;
             TxtNames.Text = TxtIsbn.Text = string.Empty;
             DtpReleaseDate.Value = DateTime.Now;
@@ -169,18 +168,18 @@ namespace NewBookRentalShopApp
                     if (result > 0)
                     {
                         // this 메시지 박스의 부모창이 누구냐, FrmLoginUser 
-                        MetroMessageBox.Show(this, "저장 성공!", "저장", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MetroMessageBox.Show(this.Parent.Parent, "저장 성공!", "저장", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //MessageBox.Show("저장 성공!", "저장", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MetroMessageBox.Show(this, "저장 실패!", "저장", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroMessageBox.Show(this.Parent.Parent, "저장 실패!", "저장", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MetroMessageBox.Show(this, $"오류 : {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this.Parent.Parent, $"오류 : {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             TxtBookIdx.Text = TxtAuthor.Text = string.Empty; // 입력, 수정, 삭제 이후에는 모든 입력값을 지워줘야 함
@@ -195,11 +194,11 @@ namespace NewBookRentalShopApp
         {
             if (string.IsNullOrEmpty(TxtBookIdx.Text))  // 구분코드가 없으면
             {
-                MetroMessageBox.Show(this, "삭제할 책을 선택하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this.Parent.Parent, "삭제할 책을 선택하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var answer = MetroMessageBox.Show(this, "정말 삭제하시겠습니까?", "삭제 여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var answer = MetroMessageBox.Show(this.Parent.Parent, "정말 삭제하시겠습니까?", "삭제 여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (answer == DialogResult.No) return;
 
             using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
@@ -216,14 +215,18 @@ namespace NewBookRentalShopApp
 
                 if (result > 0)
                 {
-                    MetroMessageBox.Show(this, "삭제 성공!", "삭제", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MetroMessageBox.Show(this.Parent.Parent, "삭제 성공!", "삭제", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MetroMessageBox.Show(this, "삭제 실패!", "삭제", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroMessageBox.Show(this.Parent.Parent, "삭제 실패!", "삭제", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             TxtBookIdx.Text = TxtAuthor.Text = string.Empty; // 입력, 수정, 삭제 이후에는 모든 입력값을 지워줘야 함
+            CboDivision.SelectedIndex = -1;
+            TxtNames.Text = TxtIsbn.Text = string.Empty;
+            DtpReleaseDate.Value = DateTime.Now;
+            NudPrice.Value = 0;
             RefreshData();  // 데이터 그리드 재조회
         }
 
