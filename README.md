@@ -392,17 +392,21 @@
 		- 책 정보 관리
 
 ## 10일차
-- 도서관리 앱
-	- 도서 회원 관리
-	- 대출 관리
-	- 이 프로그램은 ...
+- 토이 프로젝트
+	- 도서관리 앱
+		- 도서 회원 관리
+		- 대출 관리
+		- 이 프로그램은 ...
+
+		![책 대여프로그램](https://raw.githubusercontent.com/som7199/basic-csharp-2024/main/images/cs006.png)
 
 ## 나머지
+- Pending
 	- IoT Dummy 앱 with SQL Server(IoT, DB)
 	- 국가교통정보센터 CCTV 뷰앱(OpenAPI, NuGet dll, Network, UI 디자인, 비동기 메서드)
 
 ## 개인 토이 프로젝트
-- 심플 메모장 앱 + To Do List(DB연동) + 시계 => 아님 일기장^^
+- 심플 메모장 앱 + To Do List(DB연동) + 시계 => 아님 일기장?
 	- 기능 ...
 	- 특징 ...
 	- 배운 점

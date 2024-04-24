@@ -14,6 +14,16 @@ namespace NewBookRentalShopApp.Helper
                                           "Initial Catalog=BookRentalShop2024;" +
                                           "Persist Security Info=True;" +
                                           "User ID=sa;Encrypt=False;Password=mssql_p@ss";
+        // 로그인 아이디
+        public static string LoginId {  get; set; }
+
+        // 회원선택 팝업에서 대출 화면으로 넘길 데이터 정적 프로퍼티
+        public static string SelMemberIdx {  get; set; }
+        public static string SelMemberName {  get; set; }
+        public static string SelBookIdx { get; set; }
+        public static string SelBookName { get; set; }
+
+
 
         // MD5 해시 알고리즘 암호화
         // 1234 --> 01011011 -> 110010101101011 -> x65xAEx11..
