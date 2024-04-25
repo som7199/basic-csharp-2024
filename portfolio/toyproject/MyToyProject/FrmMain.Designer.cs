@@ -52,7 +52,7 @@
             TimeLabel.BorderStyle = BorderStyle.Fixed3D;
             TimeLabel.Font = new Font("나눔스퀘어라운드 Bold", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
             TimeLabel.ImageAlign = ContentAlignment.MiddleRight;
-            TimeLabel.Location = new Point(786, 62);
+            TimeLabel.Location = new Point(513, 62);
             TimeLabel.Name = "TimeLabel";
             TimeLabel.Size = new Size(183, 18);
             TimeLabel.TabIndex = 0;
@@ -65,7 +65,7 @@
             label1.Font = new Font("맑은 고딕", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(36, 9);
             label1.Name = "label1";
-            label1.Size = new Size(933, 43);
+            label1.Size = new Size(660, 43);
             label1.TabIndex = 3;
             label1.Text = "To Do List";
             label1.TextAlign = ContentAlignment.TopCenter;
@@ -75,7 +75,7 @@
             TxtTitle.BackColor = SystemColors.ControlLightLight;
             TxtTitle.Location = new Point(36, 85);
             TxtTitle.Name = "TxtTitle";
-            TxtTitle.Size = new Size(933, 23);
+            TxtTitle.Size = new Size(660, 23);
             TxtTitle.TabIndex = 4;
             // 
             // TxtDescription
@@ -83,7 +83,7 @@
             TxtDescription.BackColor = SystemColors.ControlLightLight;
             TxtDescription.Location = new Point(36, 139);
             TxtDescription.Name = "TxtDescription";
-            TxtDescription.Size = new Size(933, 23);
+            TxtDescription.Size = new Size(660, 23);
             TxtDescription.TabIndex = 5;
             // 
             // label4
@@ -110,7 +110,7 @@
             // 
             BtnNew.BackColor = Color.WhiteSmoke;
             BtnNew.ForeColor = SystemColors.ControlDarkDark;
-            BtnNew.Location = new Point(236, 171);
+            BtnNew.Location = new Point(99, 174);
             BtnNew.Name = "BtnNew";
             BtnNew.Size = new Size(130, 33);
             BtnNew.TabIndex = 10;
@@ -122,7 +122,7 @@
             // 
             BtnEdit.BackColor = Color.WhiteSmoke;
             BtnEdit.ForeColor = SystemColors.ControlDarkDark;
-            BtnEdit.Location = new Point(372, 171);
+            BtnEdit.Location = new Point(235, 174);
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(130, 33);
             BtnEdit.TabIndex = 11;
@@ -134,7 +134,7 @@
             // 
             BtnDelete.BackColor = Color.WhiteSmoke;
             BtnDelete.ForeColor = SystemColors.ControlDarkDark;
-            BtnDelete.Location = new Point(508, 171);
+            BtnDelete.Location = new Point(371, 174);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(130, 33);
             BtnDelete.TabIndex = 12;
@@ -146,7 +146,7 @@
             // 
             BtnSave.BackColor = Color.WhiteSmoke;
             BtnSave.ForeColor = SystemColors.ControlDarkDark;
-            BtnSave.Location = new Point(644, 171);
+            BtnSave.Location = new Point(507, 174);
             BtnSave.Name = "BtnSave";
             BtnSave.Size = new Size(130, 33);
             BtnSave.TabIndex = 13;
@@ -163,10 +163,11 @@
             DgvToDoList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvToDoList.BackgroundColor = Color.AliceBlue;
             DgvToDoList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvToDoList.Dock = DockStyle.Bottom;
             DgvToDoList.GridColor = SystemColors.ScrollBar;
-            DgvToDoList.Location = new Point(36, 218);
+            DgvToDoList.Location = new Point(0, 225);
             DgvToDoList.Name = "DgvToDoList";
-            DgvToDoList.Size = new Size(933, 348);
+            DgvToDoList.Size = new Size(732, 356);
             DgvToDoList.TabIndex = 14;
             // 
             // FrmMain
@@ -174,7 +175,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(1005, 581);
+            ClientSize = new Size(732, 581);
             Controls.Add(DgvToDoList);
             Controls.Add(TimeLabel);
             Controls.Add(BtnSave);

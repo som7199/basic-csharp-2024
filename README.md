@@ -391,6 +391,36 @@
 		- 책 장르 관리
 		- 책 정보 관리
 
+		```cs
+		using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
+		{
+			conn.Open();
+
+			var query = @"SELECT Division, Names FROM divtbl";
+			SqlCommand cmd = new SqlCommand(query, conn);
+			// SqlDataReader => 개발자가 하나씩 처리할 때
+			// SqlDataAdapter, Dataset => 한 번에 DataGridView 등에 뿌릴 때
+			SqlDataReader reader = cmd.ExecuteReader();
+			var temp = new Dictionary<string, string>();
+
+			while (reader.Read())
+			{
+				// Key, Value
+				// B001, 공포/스릴러
+				// reader[0] = Division 컬럼, reader[1] = Names 컬럼
+				temp.Add(reader[0].ToString(), reader[1].ToString());
+			}
+
+			Debug.WriteLine(temp.Count);
+			// 도서의 구분명(장르)
+			CboDivision.DataSource = new BindingSource(temp, null);
+			CboDivision.DisplayMember = "Value";    // 공포/스릴러 표시
+			CboDivision.ValueMember = "Key";        // B001
+			CboDivision.SelectedIndex = -1;
+			CboDivision.PromptText = "-- 구분명 선택 --";
+		}
+		```
+
 ## 10일차
 - 토이 프로젝트
 	- 도서관리 앱

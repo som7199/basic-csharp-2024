@@ -70,7 +70,7 @@ namespace MyToyProject
         {
             if (isEditing)
             {
-                if (TxtTitle.Text == string.Empty || TxtDescription.Text == string.Empty)
+                if (TxtTitle.Text == null || TxtDescription.Text == null)
                 {
                     MessageBox.Show("입력!");
                     return;
@@ -87,5 +87,6 @@ namespace MyToyProject
             TxtDescription.Text = "";
             isEditing = false;
         }
+
     }
 }
