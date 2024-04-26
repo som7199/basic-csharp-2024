@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.BtnNew = new MetroFramework.Controls.MetroButton();
@@ -68,7 +70,7 @@
             this.BtnNew.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnNew.Name = "BtnNew";
             this.BtnNew.Size = new System.Drawing.Size(107, 32);
-            this.BtnNew.TabIndex = 2;
+            this.BtnNew.TabIndex = 3;
             this.BtnNew.Text = "New";
             this.BtnNew.UseSelectable = true;
             this.BtnNew.Click += new System.EventHandler(this.BtnNew_Click);
@@ -106,7 +108,7 @@
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(107, 32);
-            this.BtnDelete.TabIndex = 5;
+            this.BtnDelete.TabIndex = 6;
             this.BtnDelete.Text = "Delete";
             this.BtnDelete.UseSelectable = true;
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
@@ -118,47 +120,71 @@
             this.BtnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(107, 32);
-            this.BtnSave.TabIndex = 6;
+            this.BtnSave.TabIndex = 5;
             this.BtnSave.Text = "Save";
             this.BtnSave.UseSelectable = true;
             this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // TxtTodo
             // 
-            this.TxtTodo.Location = new System.Drawing.Point(60, 97);
-            this.TxtTodo.Multiline = true;
+            this.TxtTodo.Font = new System.Drawing.Font("나눔고딕코딩", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.TxtTodo.Location = new System.Drawing.Point(55, 101);
             this.TxtTodo.Name = "TxtTodo";
-            this.TxtTodo.Size = new System.Drawing.Size(655, 30);
-            this.TxtTodo.TabIndex = 7;
+            this.TxtTodo.Size = new System.Drawing.Size(670, 20);
+            this.TxtTodo.TabIndex = 1;
             // 
             // DgvToDoList
             // 
+            this.DgvToDoList.AccessibleRole = System.Windows.Forms.AccessibleRole.ListItem;
+            this.DgvToDoList.AllowUserToAddRows = false;
+            this.DgvToDoList.AllowUserToDeleteRows = false;
             this.DgvToDoList.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.DgvToDoList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvToDoList.DefaultCellStyle = dataGridViewCellStyle1;
             this.DgvToDoList.Location = new System.Drawing.Point(23, 187);
+            this.DgvToDoList.MultiSelect = false;
             this.DgvToDoList.Name = "DgvToDoList";
+            this.DgvToDoList.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvToDoList.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.DgvToDoList.RowHeadersVisible = false;
             this.DgvToDoList.RowTemplate.Height = 23;
-            this.DgvToDoList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DgvToDoList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvToDoList.Size = new System.Drawing.Size(749, 186);
-            this.DgvToDoList.TabIndex = 8;
+            this.DgvToDoList.TabIndex = 7;
             this.DgvToDoList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvToDoList_CellClick);
             // 
             // TxtState
             // 
-            this.TxtState.Location = new System.Drawing.Point(721, 97);
-            this.TxtState.Multiline = true;
+            this.TxtState.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtState.Location = new System.Drawing.Point(731, 100);
+            this.TxtState.MaxLength = 1;
             this.TxtState.Name = "TxtState";
-            this.TxtState.Size = new System.Drawing.Size(51, 30);
-            this.TxtState.TabIndex = 12;
+            this.TxtState.Size = new System.Drawing.Size(36, 21);
+            this.TxtState.TabIndex = 2;
             // 
             // ChkTodo
             // 
+            this.ChkTodo.AutoSize = true;
             this.ChkTodo.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ChkTodo.Location = new System.Drawing.Point(23, 97);
+            this.ChkTodo.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ChkTodo.Location = new System.Drawing.Point(38, 106);
             this.ChkTodo.Name = "ChkTodo";
-            this.ChkTodo.Size = new System.Drawing.Size(32, 30);
-            this.ChkTodo.TabIndex = 14;
+            this.ChkTodo.Size = new System.Drawing.Size(15, 14);
+            this.ChkTodo.TabIndex = 8;
             this.ChkTodo.UseVisualStyleBackColor = true;
             this.ChkTodo.CheckedChanged += new System.EventHandler(this.ChkTodo_CheckedChanged);
             // 

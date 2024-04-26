@@ -436,8 +436,31 @@
 	- 국가교통정보센터 CCTV 뷰앱(OpenAPI, NuGet dll, Network, UI 디자인, 비동기 메서드)
 
 ## 개인 토이 프로젝트
-- 심플 메모장 앱 + To Do List(DB연동) + 시계 => 아님 일기장?
-	- 기능 ...
-	- 특징 ...
+- To Do List(DB연동) + 시계
+	- 기능
+		- todo 작성 및 저장
+		- 기존에 작성해놓은 todo 수정
+		- 완료한 todo은 체크하여 '완료'로 상태 변경
+		- 목록에서 todo 삭제
+
+	- 특징
+		- 새로운 todo 입력 시에는 체크박스가 안 뜸
+		- 기존에 작성해 둔 todo 선택 후 Edit 버튼 클릭 시 체크박스 뜸! (완료 여부에 따라 체크 유무도 바꿔주기!!!!!!!!)
+
 	- 배운 점
+		1. DataGridView의 빈 행을 잘 못 클릭했을 때 뜨는 예외 발생을 처리해주려고 했지만, 더 간단한 방법이 있었다..!
+		- (System.InvalidCastException: 지정한 캐스트가 잘못되었습니다.)
+		- DataGridView 속성값 중
+			- AllowUserToAddRows > false로 설정 : 행 추가 옵션으로 자동으로 마지막 행 추가되는 현상 방지
+			- AllowUserToDeleteRows > false로 설정 : DataGridView 컨트롤에서 기존 행을 삭제하지 않도록 해줌
+			- ReadOnly > true
+			- RowHeaderVisible > false로 설정 : 행 앞머리 숨기기! 깔끔해졌다 ㅎㅎ
+
+		2. SqlConnection, SqlCommand, SqlParameter, SqlDataAdapter
+
+		3. 느낀 점
+			- 정말로,, 발생하는 이벤트들의 순서를 잘 생각해주기.. 이벤트 핸들러 정말 낯설다..^^
+
 	- 이미지/동영상
+
+	
