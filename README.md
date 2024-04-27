@@ -466,4 +466,8 @@
 		3. 느낀 점
 			- 발생하는 이벤트들의 순서를 잘 생각해주기.. 이벤트 핸들러 정말 낯설다..^^
 
-	- 이미지/동영상
+	- 동작
+ 	![todolist](https://github.com/som7199/basic-csharp-2024/assets/95500015/ad076d91-ffdc-4a6e-bfd7-b734b0f794a7)
+
+
+
