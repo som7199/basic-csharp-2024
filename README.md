@@ -436,27 +436,24 @@
 	- 국가교통정보센터 CCTV 뷰앱(OpenAPI, NuGet dll, Network, UI 디자인, 비동기 메서드)
 
 ## 개인 토이 프로젝트
-- To Do List(DB연동) + 시계
+- To Do List + 시계
 	- 기능
 		- todo 작성 및 저장
-		- 기존에 작성해놓은 todo 수정
-		- 완료한 todo은 체크하여 '완료'로 상태 변경
-		- 목록에서 todo 삭제
+		- 기존에 작성해놓은 todo 수정 > todo 보완|완료
+		- 완료한 todo 체크 => '완료' 상태 변경
+		- 목록(DB)에서 todo 삭제
 
 	- 특징
-		- 새로운 todo 입력 시에는 체크박스가 안 뜸
-		- 기존에 작성해 둔 todo 선택 후 Edit 버튼 클릭 시 체크박스 뜸!
+		- Form_Load 시에는 할 일을 작성하라는 텍스트 보여주기
+			- New 버튼 클릭 시 TxtToDo만 뜨게 해줌(새로운 todo이므로 완료여부(N)와 체크박스(체크 안 함)으로 설정)
+			- Edit 버튼 클릭 시에는 ChkTodo, TxtTodo, TxtState 다 뜨게 해줌
 
 	- 보완
-		- MetroMessageBox 이쁘게..
-		- New 버튼 말고 TxtToDo 클릭했을 때에도 값이 입력되도록 하기!
-		- 행 선택하고 Edit 안누르고 바로 값 수정하고 Save해도 저장은 되고 있음.. 이걸 막아주는게 나을려낭...? 아예 Edit를 없앨까? 고민되네
-		- DataGridView 크기 조절 막기
-		- Description 길어질 경우 스크롤바 먹히게 바꾸기
-		- 종료할 건지 물어보는 메시지창 추가!
+		- 지금은 메인창 하나 뿐,, 창을 하나 더 띄우는 것도 구현해보기
+			- 일기장이나 메모장 등 간단한 기능을 추가해보자!
 
 	- 배운 점
-		1. DataGridView의 빈 행을 잘 못 클릭했을 때 뜨는 예외 발생을 처리해주려고 했지만, 더 간단한 방법이 있었다..!
+		1. DataGridView의 빈 행을 잘 못 클릭했을 때 뜨는 예외 발생을 처리해 주려고 했지만, 더 간단한 방법이 있었다..!
 		- (System.InvalidCastException: 지정한 캐스트가 잘못되었습니다.)
 		- DataGridView 속성값 중
 			- AllowUserToAddRows > false로 설정 : 행 추가 옵션으로 자동으로 마지막 행 추가되는 현상 방지
@@ -464,11 +461,9 @@
 			- ReadOnly > true
 			- RowHeaderVisible > false로 설정 : 행 앞머리 숨기기! 깔끔해졌다 ㅎㅎ
 
-		2. SqlConnection, SqlCommand, SqlParameter, SqlDataAdapter
+		2. SqlConnection, SqlCommand, SqlParameter, SqlDataAdapter 사용법
 
 		3. 느낀 점
-			- 정말로,, 발생하는 이벤트들의 순서를 잘 생각해주기.. 이벤트 핸들러 정말 낯설다..^^
+			- 발생하는 이벤트들의 순서를 잘 생각해주기.. 이벤트 핸들러 정말 낯설다..^^
 
 	- 이미지/동영상
-
-	

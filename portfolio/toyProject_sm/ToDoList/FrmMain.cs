@@ -25,6 +25,13 @@ namespace ToDoList
             timer.Start();
             RefreshData();              // todotbl 의 데이터 불러오기
             ChkTodo.Visible = false;    // 처음에는 체크박스 뜨지 않음!
+            TxtState.Visible = false;   // 상태여부도 뜨지 않음!
+            
+            TxtTodo.Width = 712;        // 젤 처음 폼 로드 시에는 TxtTodo만 보이게 해주려고 크게 잡음!
+            TxtTodo.Text = "New 버튼을 클릭하여 해야할 일을 작성해보세요!";
+            TxtTodo.TextAlign = HorizontalAlignment.Center;
+            TxtTodo.ReadOnly = true;
+
             DgvToDoList.ClearSelection();   // DataGridView 첫 번째 행 자동 선택 해제
         }
 
@@ -45,12 +52,12 @@ namespace ToDoList
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
-                adapter.Fill(ds, "rentaltbl");      // 대표 테이블 이름 사용하면 됨
+                adapter.Fill(ds, "todotbl");      // 대표 테이블 이름 사용하면 됨
 
                 DgvToDoList.DataSource = ds.Tables[0];
 
                 //MessageBox.Show(ds.Tables.ToString());        // System.Data.DataTableCollection
-                //MessageBox.Show(ds.Tables[0].ToString());   // 테이블명 rentaltbl
+                //MessageBox.Show(ds.Tables[0].ToString());   // 테이블명 todotbl
                 DgvToDoList.ReadOnly = true;  // 수정 불가
                 
                 // DgvToDoList.Columns[0].HeaderText = "Id";
@@ -66,13 +73,35 @@ namespace ToDoList
 
         private void BtnNew_Click(object sender, EventArgs e)
         {
-            settingForNew();
+            isNew = true;
+            // 새로운 할 일을 입력하기 때문에 체크박스와 완료여부는 보이지 않게 해주기
+            // 입력란 칸이 짧아보이기 때문에 크기 조절도 잊지말기 ( SAVE 버튼 클릭 시 원래 사이즈로 돌아옴!)
+            ChkTodo.Visible = false;
+            TxtState.Visible = false;
+
+            TxtTodo.Width = 712;
+            TxtTodo.ReadOnly = false;
+            TxtTodo.TextAlign = HorizontalAlignment.Left;
+            TxtTodo.Text = TxtState.Text = string.Empty;
+            TxtTodo.Focus();
+            DgvToDoList.ClearSelection();   // DataGridView 첫 번째 행 자동 선택 해제
         }
 
         // DataGridView에 있는 todo 선택 시 todoIdx값을 담아주고
         // description과 state도 텍스트박스에 보여주기
         private void DgvToDoList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // 체크박스와 상태여부도 뜨게 해줌!
+            ChkTodo.Visible = true;
+            TxtState.Visible = true;
+
+            // 초기 화면과 New 버튼 클릭 시에는 TxtTodo 꽉 차게 설정해뒀음
+            // 초기 화면에서 버튼 없이 바로 DgvToDoList의 행을 선택할 경우 TxtTodo 랑 TxtState 칸이 겹침 ㅠ 원상복구 해주기
+            // 값을 수정할 수 있게 바꿔주고, 왼쪽 정렬해주기
+            TxtTodo.Width = 670;
+            TxtTodo.ReadOnly = false;
+            TxtTodo.TextAlign = HorizontalAlignment.Left;
+
             todoIdx = (int) DgvToDoList.SelectedRows[0].Cells[0].Value;
             TxtTodo.Text = DgvToDoList.SelectedRows[0].Cells[1].Value.ToString();
             TxtState.Text = DgvToDoList.SelectedRows[0].Cells[2].Value.ToString();
@@ -92,8 +121,22 @@ namespace ToDoList
             }
         }
 
+        // 체크 박스 체크 유무에 따라 TxtState 값 변경해주기
+        private void ChkTodo_CheckedChanged(object sender, EventArgs e)
+        {
+            TxtState.Text = "Y".ToString();
+
+            if (ChkTodo.Checked != true)
+            {
+                TxtState.Text = "N".ToString();
+            }
+        }
+
         private void BtnEdit_Click(object sender, EventArgs e)
         {
+            TxtTodo.ReadOnly = false;
+            TxtTodo.TextAlign = HorizontalAlignment.Left;
+
             // 완료되지 않은 일 => 체크 X, 체크박스 활성화
             if (TxtState.Text == "N")
             {
@@ -106,9 +149,8 @@ namespace ToDoList
             TxtTodo.Text = DgvToDoList.SelectedRows[0].Cells[1].Value.ToString();
             TxtState.Text = DgvToDoList.SelectedRows[0].Cells[2].Value.ToString();
 
-            // 체크박스는 Edit 할 때만 보여주기
+            //  Edit 할 땐 체크박스 보여주기
             ChkTodo.Visible = true;
-
             // 체크박스는 항상 활성화!
             // 일이 완벽히 안됐다고 생각할 경우 다시 체크를 비활성화해야할 수도 있기 때문에
             ChkTodo.Enabled = true;
@@ -124,18 +166,23 @@ namespace ToDoList
                 return;
             }
 
+            // 어차피 New 버튼을 클릭할 땐 새로운 할 일을 입력하는 것이므로 완료여부 작성X
+            // Edit 후 SAVE 할 때에도 체크박스 유무에 따라 Y, N값을 TxtState.Text 담아 저장하므로 없어도 됨!
+            // 주석처리 하겠음
+            /*
             if (string.IsNullOrEmpty(TxtState.Text))
             {
                 MetroMessageBox.Show(this, "완료 여부를 작성해주세요!", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            */
 
-            if (!(TxtState.Text.ToUpper() == "Y" || TxtState.Text.ToUpper() == "N"))
+            // 대신 Edit 할 때는 입력검증을 받아야함.
+            if (!(TxtState.Text.ToUpper() == "Y" || TxtState.Text.ToUpper() == "N" || TxtState.Text.ToUpper() == ""))
             {
-                MetroMessageBox.Show(this, "완료 여부는 (Y|N)으로 작성바랍니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroMessageBox.Show(this, "완료 여부는 (Y|N)으로 작성바랍니다.", "경고", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
                 return;
             }
-
 
             try
             {
@@ -167,9 +214,19 @@ namespace ToDoList
                     SqlParameter prmDescription = new SqlParameter("@description", TxtTodo.Text);
                     cmd.Parameters.Add(prmDescription);
 
-                    SqlParameter prmState = new SqlParameter("@state", TxtState.Text.ToUpper());
-                    cmd.Parameters.Add(prmState);
-
+                    // New 버튼 클릭 시, TxtState 박스가 뜨지 않기 때문에
+                    // Default 값으로 N 값을 넣어주고 그 값을 DB에 저장할 것!
+                    if (TxtState.Text.ToUpper() == "")
+                    {
+                        SqlParameter prmState_forNew = new SqlParameter("@state", "N");
+                        cmd.Parameters.Add(prmState_forNew);
+                    }
+                    else
+                    {
+                        SqlParameter prmState = new SqlParameter("@state", TxtState.Text.ToUpper());
+                        cmd.Parameters.Add(prmState);
+                    }
+                    
                     if (isNew != true)
                     {
                         SqlParameter prmToDoIdx = new SqlParameter("@todoIdx", todoIdx);
@@ -191,15 +248,13 @@ namespace ToDoList
             {
                 MetroMessageBox.Show(this, $"오류 : {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            TxtTodo.Width = 670;
             makeEmpty();
             RefreshData();
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            TxtTodo.Text = DgvToDoList.SelectedRows[0].Cells[1].Value.ToString();
-            TxtState.Text = DgvToDoList.SelectedRows[0].Cells[2].Value.ToString();
-
             if (string.IsNullOrEmpty(TxtTodo.Text))
             {
                 MetroMessageBox.Show(this, "삭제할 할 일을 선택하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -233,28 +288,6 @@ namespace ToDoList
             RefreshData();
         }
 
-        // 체크 박스 체크 유무에 따라 TxtState 값 변경해주기
-        private void ChkTodo_CheckedChanged(object sender, EventArgs e)
-        {
-            TxtState.Text = "Y".ToString();
-
-            if (ChkTodo.Checked != true)
-            {
-                TxtState.Text = "N".ToString();
-            }
-        }
-
-        // new 기능을 위한 메서드
-        private void settingForNew()
-        {
-            isNew = true;
-            ChkTodo.Visible = false;
-
-            TxtTodo.Text = TxtState.Text = string.Empty;
-            TxtTodo.Focus();
-            DgvToDoList.ClearSelection();   // DataGridView 첫 번째 행 자동 선택 해제
-        }
-
         // save, delete 버튼 클릭 후
         // TxtTodo, TxtState 비워주기
         // 체크박스 안보이게 해주기
@@ -268,34 +301,17 @@ namespace ToDoList
             DgvToDoList.ClearSelection();   // DataGridView 첫 번째 행 자동 선택 해제
         }
 
-        /*
-        // NEW를 누르지 않고도 TxtTodo를 클릭했을 때, 작성하고 저장할 수 있도록 해주기 
-        private void TxtTodo_Click(object sender, EventArgs e)
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            writeTodo();
-        }
-        
-
-        // TxtTodo, TxtState 작성하는 부분!!
-        private void writeTodo()
-        {
-            // 새로운 값을 입력할 때
-            if (string.IsNullOrEmpty(TxtTodo.Text))
+            var res = MetroMessageBox.Show(this, "종료하시겠습니까?", "종료 여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.No)
             {
-                settingForNew();
+                e.Cancel = true;
             }
-            // Edit 버튼 눌렀을 때 입력창을 한번 더 클릭하는 경우
             else
             {
-                isNew = true;
-                ChkTodo.Visible = false;
-
-                todoIdx = (int)DgvToDoList.SelectedRows[0].Cells[0].Value;
-                TxtTodo.Text = DgvToDoList.SelectedRows[0].Cells[1].Value.ToString();
-                TxtState.Text = DgvToDoList.SelectedRows[0].Cells[2].Value.ToString();
-                ChkTodo.Enabled = true;
+                Environment.Exit(0);
             }
         }
-        */
     }
 }

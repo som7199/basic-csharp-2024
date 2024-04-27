@@ -65,6 +65,7 @@
             // 
             // BtnNew
             // 
+            this.BtnNew.AccessibleDescription = "";
             this.BtnNew.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BtnNew.Location = new System.Drawing.Point(188, 138);
             this.BtnNew.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -138,6 +139,8 @@
             this.DgvToDoList.AccessibleRole = System.Windows.Forms.AccessibleRole.ListItem;
             this.DgvToDoList.AllowUserToAddRows = false;
             this.DgvToDoList.AllowUserToDeleteRows = false;
+            this.DgvToDoList.AllowUserToResizeColumns = false;
+            this.DgvToDoList.AllowUserToResizeRows = false;
             this.DgvToDoList.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.DgvToDoList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -175,6 +178,7 @@
             this.TxtState.Name = "TxtState";
             this.TxtState.Size = new System.Drawing.Size(36, 21);
             this.TxtState.TabIndex = 2;
+            this.TxtState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ChkTodo
             // 
@@ -210,6 +214,7 @@
             this.Resizable = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Style = MetroFramework.MetroColorStyle.Silver;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvToDoList)).EndInit();
             this.ResumeLayout(false);
