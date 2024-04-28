@@ -463,23 +463,27 @@
 
 		2. SqlConnection, SqlCommand, SqlParameter, SqlDataAdapter 사용법
   			- SqlConnection
-       				- 데이터베이스 서버와의 연결 담당
-       				- DB 연결을 위한 연결 문자열 필요!
-       				- SqlConnection 객체 사용 후 반드시 Connection을 닫아주는 코드 넣어줘야 함
-       			- SqlCommand
-          			- 데이터베이스 서버에서 실행될 SQL문 전달 담당
-               			- DB가 연결되면, 해당 DB가 소유한 모든 자원을 SqlCommand 타입을 이용하여 조작 가능
-                    		- INSERT, UPDATE, DELETE 구문은 값 반환보단 수행에 의미
-                        	- SELECT 구문은 데이터 조회 후 값을 반환
-                         -  SqlParameter
-                           	- 매개변수화된 쿼리를 사용할 수 있도록 함
-              		- SqlDataReader
-                  		- 실행된 SQL문으로부터 반환받은 데이터 조회를 담당
-                     		- SELECT문의 결과를 한 행씩 읽어냄
-                         	- Read 메서드 호출할 때마다 DB에서 현재 행에 대한 값을 읽어옴
-              		- SqlDataAdapter
-                  		- 한 번에 DataGridView 등에 뿌릴 때 사용
-                      		- SqlDataAdapter를 사용해 connection 하게되면 SQlDataAdapter.Fill()을 통하여 Dataset형식으로 반환
+                - 데이터베이스 서버와의 연결 담당
+                - DB 연결을 위한 연결 문자열 필요!
+                -  SqlConnection 객체 사용 후 반드시 Connection을 닫아주는 코드 넣어줘야 함
+
+            - SqlCommand
+                - 데이터베이스 서버에서 실행될 SQL문 전달 담당
+                - DB가 연결되면, 해당 DB가 소유한 모든 자원을 SqlCommand 타입을 이용하여 조작 가능
+                - INSERT, UPDATE, DELETE 구문은 값 반환보단 수행에 의미
+                - SELECT 구문은 데이터 조회 후 값을 반환
+                         
+            -  SqlParameter
+                - 매개변수화된 쿼리를 사용할 수 있도록 함
+
+            - SqlDataReader
+                - 실행된 SQL문으로부터 반환받은 데이터 조회를 담당
+                - SELECT문의 결과를 한 행씩 읽어냄
+                - Read 메서드 호출할 때마다 DB에서 현재 행에 대한 값을 읽어옴
+              		
+            - SqlDataAdapter
+                - 한 번에 DataGridView 등에 뿌릴 때 사용
+                - SqlDataAdapter를 사용해 connection 하게되면 SQlDataAdapter.Fill()을 통하여 Dataset형식으로 반환
   		
 	- 느낀 점
 		- 발생하는 이벤트들의 순서를 잘 생각해주기.. 이벤트 핸들러 정말 낯설다..^^
