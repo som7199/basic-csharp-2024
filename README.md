@@ -460,7 +460,7 @@
 			- AllowUserToDeleteRows > false로 설정 : DataGridView 컨트롤에서 기존 행을 삭제하지 않도록 해줌
 			- ReadOnly > true
 			- RowHeaderVisible > false로 설정 : 행 앞머리 숨기기! 깔끔해졌다 ㅎㅎ
-
+            
 		2. SqlConnection, SqlCommand, SqlParameter, SqlDataAdapter 사용법
   			- SqlConnection
                 - 데이터베이스 서버와의 연결 담당
