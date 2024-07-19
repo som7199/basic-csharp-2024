@@ -1,0 +1,20 @@
+﻿USE [ToyProjectSom]
+GO
+
+/****** Object:  Table [dbo].[todotbl]    Script Date: 2024-07-19 오후 4:26:10 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[todotbl](
+   [todoIdx] [int] IDENTITY(1,1) NOT NULL,
+   [description] [ntext] NULL,
+   [state] [varchar](1) NULL,
+ CONSTRAINT [PK_todotbl] PRIMARY KEY CLUSTERED 
+(
+   [todoIdx] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
